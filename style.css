@@ -1,0 +1,440 @@
+/* Custom Variable Definitions & Globals */
+:root {
+  --royal-crimson: #58111A;
+  --royal-gold: #D4AF37;
+  --gold-accent: #C59B27;
+  --studio-dark: #070708;
+  --studio-darker: #030304;
+  
+  /* Neumorphic Glassmorphism Fusion Colors */
+  --card-bg: rgba(12, 12, 14, 0.7);
+  --border-light: rgba(255, 255, 255, 0.05);
+  --border-gold: rgba(212, 175, 55, 0.15);
+  
+  /* Custom Neumorphic Shadows */
+  --neu-flat-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7), 
+                    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --neu-glow-shadow: 0 12px 40px rgba(0, 0, 0, 0.8),
+                     0 0 30px rgba(212, 175, 55, 0.05),
+                     inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  --neu-inset: inset 2px 2px 5px rgba(0, 0, 0, 0.8), 
+               inset -2px -2px 5px rgba(255, 255, 255, 0.03);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  cursor: none !important; /* Custom premium cursor */
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--studio-darker);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--royal-crimson);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--royal-gold);
+}
+
+html {
+  background-color: var(--studio-darker);
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--studio-dark);
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Particles Canvas Backdrop */
+#particles-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1; /* Behind content but in front of body background */
+}
+
+/* Custom Cursor styling */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--royal-gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s cubic-bezier(0.19, 1, 0.22, 1), 
+              height 0.3s cubic-bezier(0.19, 1, 0.22, 1), 
+              background-color 0.3s ease, 
+              border-color 0.3s ease;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor.hovered {
+  width: 44px;
+  height: 44px;
+  background-color: rgba(212, 175, 55, 0.1);
+  border-color: #ffffff;
+}
+
+/* Navigation glass effect */
+#navbar.scrolled {
+  background-color: rgba(7, 7, 8, 0.92);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+}
+
+/* Glass-Neumorphism Fusion Cards */
+.glass-card-fusion {
+  background: var(--card-bg);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid var(--border-light);
+  border-radius: 24px;
+  box-shadow: var(--neu-flat-shadow);
+  transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.1s ease-out;
+}
+
+.glass-card-fusion:hover {
+  border-color: var(--border-gold);
+  box-shadow: var(--neu-glow-shadow);
+}
+
+/* Neumorphic Interactive Press States */
+.neu-btn-press {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+.neu-btn-press:active {
+  transform: scale(0.96);
+  box-shadow: var(--neu-inset);
+}
+
+/* 3D Tilt Wrapper */
+.tilt-card-inner {
+  transition: transform 0.15s ease-out;
+  transform-style: preserve-3d;
+}
+
+/* Hero Section Overlay Vignette */
+#hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 180px;
+  background: linear-gradient(to top, var(--studio-dark), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Text Mask Reveal Utilities */
+.text-mask-wrapper {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.text-mask-child {
+  display: inline-block;
+  transform: translateY(100%);
+}
+
+/* Dark Grayscale Map styling */
+.map-dark-filter iframe {
+  filter: grayscale(1) invert(0.92) contrast(1.15) brightness(0.85);
+  transition: filter 0.5s ease;
+}
+.map-dark-filter:hover iframe {
+  filter: grayscale(0.5) invert(0.1) contrast(1.05) brightness(0.95);
+}
+
+/* Custom Hide Scrollbar */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* --- iPhone 15 Pro Max Mockup Custom CSS --- */
+.iphone-frame {
+  position: relative;
+  width: 305px;
+  height: 610px;
+  border-radius: 44px;
+  background: #030303;
+  padding: 8px;
+  /* Dark titanium space-gray frame */
+  border: 7px solid #1f1f21;
+  box-shadow: var(--neu-flat-shadow),
+              inset 0 0 4px rgba(255, 255, 255, 0.15),
+              0 25px 55px -15px rgba(0, 0, 0, 0.85);
+}
+
+.iphone-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 35px;
+  background: #000000;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Glass glare highlight across screen */
+.iphone-screen::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0) 50%);
+  pointer-events: none;
+  z-index: 25;
+  transform: translate(-50%, -50%);
+}
+
+.iphone-dynamic-island {
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85px;
+  height: 24px;
+  background: #000;
+  border-radius: 12px;
+  z-index: 30;
+  box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+/* Screen Slide-in Reels Player */
+.iphone-reels-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 20;
+  border-radius: 35px;
+  transform: translateY(100%);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.iphone-reels-player.active {
+  transform: translateY(0);
+}
+
+/* Rotating vinyl sound disc animation */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-vinyl-spin {
+  animation: spin 3.5s linear infinite;
+}
+
+/* Preloader styles */
+.preloader-curtain {
+  position: fixed;
+  inset: 0;
+  background: #f5f5f7; /* Luxury off-white */
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.8s cubic-bezier(0.85, 0, 0.15, 1), opacity 0.8s ease-in-out;
+}
+
+/* Smooth Scrolling Parallax Speed Helpers */
+.parallax-layer {
+  will-change: transform;
+}
+
+/* Responsive Overrides */
+@media (max-width: 768px) {
+  * {
+    cursor: auto !important; /* Restore cursor on mobile touch */
+  }
+  .custom-cursor {
+    display: none !important;
+  }
+  
+  /* Mobile-Only Stackable Reviews ("Book Effect") */
+  #reviewsGrid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    padding-bottom: 2rem;
+  }
+  
+  #reviewsGrid .glass-card-fusion {
+    position: sticky !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-origin: center top;
+  }
+  
+  /* Staggered sticky top offsets and z-indexes for 6 cards */
+  #reviewsGrid .glass-card-fusion:nth-child(1) { top: 90px !important; z-index: 10; }
+  #reviewsGrid .glass-card-fusion:nth-child(2) { top: 110px !important; z-index: 11; }
+  #reviewsGrid .glass-card-fusion:nth-child(3) { top: 130px !important; z-index: 12; }
+  #reviewsGrid .glass-card-fusion:nth-child(4) { top: 150px !important; z-index: 13; }
+  #reviewsGrid .glass-card-fusion:nth-child(5) { top: 170px !important; z-index: 14; }
+  #reviewsGrid .glass-card-fusion:nth-child(6) { top: 190px !important; z-index: 15; }
+}
+
+/* Couture Reels Video Thumbnail & Cross-fade Autoplay Styles */
+.video-card-link {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--studio-darker);
+}
+
+.video-card-link .video-poster {
+  position: absolute;
+  top: 0;
+  left: -8%;
+  width: 116%;
+  height: 100%;
+  max-width: none !important;
+  object-fit: cover;
+  filter: brightness(0.65);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.video-card-link .video-element {
+  position: absolute;
+  top: 0;
+  left: -8%;
+  width: 116%;
+  height: 100%;
+  max-width: none !important;
+  object-fit: cover;
+  filter: brightness(0.6);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  opacity: 0;
+  z-index: 5;
+}
+
+/* Desktop Hover States */
+@media (hover: hover) {
+  .video-card-link:hover .video-poster {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  .video-card-link:hover .video-element {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+/* Playing State (used for mobile and fallback trigger) */
+.video-card-link.video-playing .video-poster {
+  opacity: 0;
+  transform: scale(1.05);
+}
+.video-card-link.video-playing .video-element {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* ==========================================
+   HERO BRAND LOCKUP ANIMATIONS
+   ========================================== */
+
+/* Looping gold shimmer sweep across brand name */
+@keyframes heroShimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.hero-brand-shimmer {
+  background: linear-gradient(
+    90deg,
+    #C59B27 0%,
+    #fffbe6 28%,
+    #D4AF37 50%,
+    #fff8c0 72%,
+    #C59B27 100%
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: heroShimmer 4.5s linear infinite;
+}
+
+/* Slow gold-to-white sweep on "BRIDE & GROOM" gradient */
+@keyframes goldSweep {
+  0%   { background-position: 0% center; }
+  50%  { background-position: 100% center; }
+  100% { background-position: 0% center; }
+}
+
+.hero-gold-sweep {
+  background: linear-gradient(
+    90deg,
+    #D4AF37, #ffffff, #C59B27, #fff5c0, #D4AF37
+  );
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: goldSweep 6s ease-in-out infinite;
+}
+
+/* Ambient glow pulse radiating behind the brand lockup */
+@keyframes heroBrandGlow {
+  0%, 100% { opacity: 0.18; transform: scale(1);    }
+  50%       { opacity: 0.36; transform: scale(1.1);  }
+}
+
+#heroBrandLockup {
+  position: relative;
+}
+
+#heroBrandLockup::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 520px;
+  height: 200px;
+  background: radial-gradient(ellipse at center, rgba(212,175,55,0.38) 0%, transparent 70%);
+  filter: blur(48px);
+  pointer-events: none;
+  z-index: -1;
+  animation: heroBrandGlow 3.5s ease-in-out infinite;
+}
