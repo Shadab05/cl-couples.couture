@@ -196,13 +196,28 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.getElementById("menuToggle");
   const menuClose = document.getElementById("menuClose");
   const mobileDrawer = document.getElementById("mobileDrawer");
+  const drawerBackdrop = document.getElementById("drawerBackdrop");
   const drawerLinks = document.querySelectorAll(".drawer-link");
 
-  const openDrawer = () => mobileDrawer?.classList.remove("translate-x-full");
-  const closeDrawer = () => mobileDrawer?.classList.add("translate-x-full");
+  const openDrawer = () => {
+    mobileDrawer?.classList.remove("translate-x-full");
+    drawerBackdrop?.classList.remove("opacity-0", "pointer-events-none");
+    drawerBackdrop?.classList.add("opacity-100", "pointer-events-auto");
+    document.body.classList.add("overflow-hidden");
+    document.documentElement.classList.add("overflow-hidden");
+  };
+
+  const closeDrawer = () => {
+    mobileDrawer?.classList.add("translate-x-full");
+    drawerBackdrop?.classList.remove("opacity-100", "pointer-events-auto");
+    drawerBackdrop?.classList.add("opacity-0", "pointer-events-none");
+    document.body.classList.remove("overflow-hidden");
+    document.documentElement.classList.remove("overflow-hidden");
+  };
 
   if (menuToggle) menuToggle.addEventListener("click", openDrawer);
   if (menuClose) menuClose.addEventListener("click", closeDrawer);
+  if (drawerBackdrop) drawerBackdrop.addEventListener("click", closeDrawer);
   drawerLinks.forEach((link) => link.addEventListener("click", closeDrawer));
 
   /* ==========================================

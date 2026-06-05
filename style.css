@@ -43,6 +43,12 @@
   background: var(--royal-gold);
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+}
+
 html {
   background-color: var(--studio-darker);
 }
@@ -51,7 +57,6 @@ body {
   font-family: 'Montserrat', sans-serif;
   background-color: var(--studio-dark);
   color: #ffffff;
-  overflow-x: hidden;
 }
 
 /* Particles Canvas Backdrop */
@@ -59,8 +64,8 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
   z-index: 1; /* Behind content but in front of body background */
 }
@@ -437,4 +442,22 @@ body {
   pointer-events: none;
   z-index: -1;
   animation: heroBrandGlow 3.5s ease-in-out infinite;
+}
+
+/* Mobile Drawer Overrides & Backdrop Overlay styling */
+#mobileDrawer {
+  background-color: #070708 !important; /* solid opaque dark background */
+  z-index: 100 !important; /* Ensure it is on top of everything, including backdrop */
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important; /* Premium fluid cubic-bezier ease */
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Backdrop Overlay styling above header (z-50) but below drawer (z-100) */
+#drawerBackdrop {
+  z-index: 90 !important;
+}
+
+/* Absolute Scroll Lock Helper */
+.overflow-hidden {
+  overflow: hidden !important;
 }
