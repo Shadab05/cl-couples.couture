@@ -43,7 +43,7 @@
   background: var(--royal-gold);
 }
 
-html, body {
+body {
   overflow-x: clip;
   max-width: 100%;
   width: 100%;
